@@ -1,20 +1,36 @@
 import Button from "./Button"
 const Header = ()=>{
     return(
-        <div>
-            <h1>Logo</h1>
+        <div style={styles.container}>
+            <h1 style={styles.logo}>Logo</h1>
 
-            <div>
+            <div style={styles.menuItems}>
                 <a href="#">Home</a>
                 <a href="#">About</a>
                 <a href="#">Contact</a>
             </div>
 
-            <Button text="Explore"/>
-            <Button text="signup" />
-            <Button text="Get started"/>
+            <Button text="Explore" bgColor="blue"/>
         </div>
     )
+}
+
+const styles = {
+    container:{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: "#eee"
+    },
+    logo :{
+        color: "red"
+    },
+
+    menuItems: {
+        display: "flex",
+        alignItems: "center",
+        gap: "1.5rem"
+    }
 }
 
 
