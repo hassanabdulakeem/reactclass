@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Products = () => {
     const [products, setProducts] = useState([])
@@ -10,20 +10,21 @@ const Products = () => {
             const res = await fetch("https://fakestoreapi.com/products")
             const data = await res.json()
             setProducts(data)
-        } catch (error) {
+        }
+         catch (error) {
             console.log(error)
         } finally {
             setIsLoading(false)
         }
     }
 
-    // fetchProducts()
+    useEffect(() => {
+      fetchProducts()
+    }, [])
 
     return (
         <section>
             <h1>Products</h1>
-
-            <button onClick={fetchProducts}>Fetch products</button>
 
             <section>
                 {

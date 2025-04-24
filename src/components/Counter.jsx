@@ -1,14 +1,18 @@
+
+// usestate, useRef, useEffect
+
+
+
 import { useState } from "react"
 import Button from "./Button"
 
 const Counter = ()=>{
-    const [number, setNumber] = useState(1)
+    const [number, setNumber] = useState()
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     
     const handleLogin = ( )=>{
-        setIsLoggedIn(true)
+      setIsLoggedIn(true)
     }
-
 
     return(
         <div>
