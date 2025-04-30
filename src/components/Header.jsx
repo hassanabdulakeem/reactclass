@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Button from "./Button"
 const Header = ()=>{
     return(
@@ -5,9 +6,10 @@ const Header = ()=>{
             <h1 style={styles.logo}>Logo</h1>
 
             <div style={styles.menuItems}>
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+                <Link to="/">Home</Link>
+                <Link to="/about">About</Link>
+                <Link to="/contact">Contact us</Link>
+                <Link to="/products">Products</Link>
             </div>
 
             <Button text="Explore" bgColor="blue"/>

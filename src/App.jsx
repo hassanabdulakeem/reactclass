@@ -1,19 +1,15 @@
-// import Counter from "./components/Counter"
-import Effect from "./components/Effect"
-import Header from "./components/Header"
-import Hero from "./components/Hero"
-import ProductList from "./components/ProductList"
-import Products from "./components/Products"
-import Ref from "./components/Ref"
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Homepage from './pages/Homepage'
+import Products from './pages/Products'
+import SingleProduct from './pages/SingleProduct'
+import NotFound from './pages/NotFound'
+import Header from './components/Header'
 
-// Hook are the special functions that we use instead of components. It makes the work fit and effective.
-// useState, usecontext, useEffect, useRef, useReducer
-
-function App() {
-
+const App = () => {
   return (
     <>
-    <Ref />
+    {/* <Ref /> */}
     <Effect />
     {/* <Products /> */}
     {/* <Counter /> */}
