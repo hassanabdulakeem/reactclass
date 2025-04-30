@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    {/* <Ref /> */}
+    <Ref />
     <Effect />
     {/* <Products /> */}
     {/* <Counter /> */}
