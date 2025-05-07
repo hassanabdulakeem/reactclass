@@ -10,6 +10,7 @@ import Users from "./pages/Users";
 
 const App = () => {
   return (
+<<<<<<< HEAD
     <div>
       <AuthProvider>
         <BrowserRouter>
@@ -27,5 +28,19 @@ const App = () => {
     </div>
   );
 };
+=======
+    <>
+    {/* <Ref /> */}
+    <Effect />
+    {/* <Products /> */}
+    {/* <Counter /> */}
+      {/* <Header />
+      <Hero />
+      <ProductList /> */}
+      {/* ProductList */}
+    </>
+  )
+}
+>>>>>>> f8700dc93ed3930a50800afe6d551624bd0fc194
 
 export default App;
