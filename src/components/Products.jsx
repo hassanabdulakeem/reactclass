@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react"
 
 const Products = () => {
-    const [products, setProducts] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    // const [products, setProducts] = useState([])
+    // const [isLoading, setIsLoading] = useState(false)
 
-    const fetchProducts = async () => {
-        setIsLoading(true)
-        try {
-            const res = await fetch("https://fakestoreapi.com/products")
-            const data = await res.json()
-            setProducts(data)
-        }
-         catch (error) {
-            console.log(error)
-        } finally {
-            setIsLoading(false)
-        }
-    }
+    // const fetchProducts = async () => {
+    //     setIsLoading(true)
+    //     try {
+    //         const res = await fetch("https://fakestoreapi.com/products")
+    //         const data = await res.json()
+    //         setProducts(data)
+    //     }
+    //      catch (error) {
+    //         console.log(error)
+    //     } finally {
+    //         setIsLoading(false)
+    //     }
+    // }
 
-    useEffect(() => {
-      fetchProducts()
-    }, [])
+    // useEffect(() => {
+    //   fetchProducts()
+    // }, [])
 
     return (
         <section>

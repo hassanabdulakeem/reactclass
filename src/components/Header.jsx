@@ -10,6 +10,7 @@ const Header = ()=>{
                 <Link to="/about">About</Link>
                 <Link to="/contact">Contact us</Link>
                 <Link to="/products">Products</Link>
+                <Link to="/dashboard">Dashboard</Link>
             </div>
 
             <Button text="Explore" bgColor="blue"/>

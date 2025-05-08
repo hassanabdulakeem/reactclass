@@ -7,40 +7,45 @@ import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import AuthProvider from "./contexts/AuthContext";
 import Users from "./pages/Users";
+import ProductProvider from "./contexts/ProductContext";
+import Signin from "./pages/Signin";
+import Dashboard from "./pages/Dashboard";
+import ProtedtedRoutes from "./components/ProtedtedRoutes";
+import { Toaster } from "sonner";
 
 const App = () => {
   return (
-<<<<<<< HEAD
     <div>
       <AuthProvider>
-        <BrowserRouter>
-          <Header />
-        
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/products/:id" element={<SingleProduct />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <ProductProvider>
+          <BrowserRouter>
+            <Header />
+              
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/products/:id" element={<SingleProduct />} />
+              <Route path="/signin" element={<Signin />} />
+
+              <Route element={<ProtedtedRoutes />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Route>
+
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+          <Toaster position="top-right" richColors closeButton 
+          icons={{
+            success: "./assets/react.svg"
+          }}
+
+
+          />
+        </ProductProvider>
       </AuthProvider>
     </div>
   );
 };
-=======
-    <>
-    {/* <Ref /> */}
-    <Effect />
-    {/* <Products /> */}
-    {/* <Counter /> */}
-      {/* <Header />
-      <Hero />
-      <ProductList /> */}
-      {/* ProductList */}
-    </>
-  )
-}
->>>>>>> f8700dc93ed3930a50800afe6d551624bd0fc194
 
 export default App;
