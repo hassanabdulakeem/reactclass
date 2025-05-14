@@ -8,7 +8,6 @@ const AuthProvider = ({children}) =>{
 
     // FETCH ALL USERS
     const fetchUsers = async ()=>{
-
         try {
             const res = await fetch(`${baseUrl}/users`)
             const data = await res.json()
@@ -19,9 +18,27 @@ const AuthProvider = ({children}) =>{
         }
     }
 
+    // LOGOUT
+   
+    
+  
+   
+    const isAuthenticated = ()=>{
+        // check if user is authenticated by checking if there's an accessToken in the localStorage
+        const accessToken = localStorage.getItem("accessToken")
+          // if there's an accessToken, return true
+        if(accessToken){
+            return true
+        } else{
+             // if there's no accessToken in the localStorage, return false
+            return false
+        }
+    }
+
     const value = {
         users,
-        fetchUsers
+        fetchUsers,
+        isAuthenticated
     }
 
     return (

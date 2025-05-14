@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Navigate, Outlet, useNavigate } from "react-router-dom"
 import { toast } from "sonner"
+import { authContext } from "../contexts/AuthContext"
 
 const ProtedtedRoutes = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    // get access token form loacl storage
+    const {isAuthenticated} = useContext(authContext)
+    const isAuth = isAuthenticated() // true || false
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if(!isAuthenticated){
+        if(!isAuth){
             toast.warning("You have to be logged in")
             navigate("/signin")
         }
-    },[isAuthenticated, navigate])
+    },[isAuth, navigate])
 
-    return isAuthenticated ? <Outlet /> : null
+    return isAuth ? <Outlet /> : null
 }
 
 export default ProtedtedRoutes

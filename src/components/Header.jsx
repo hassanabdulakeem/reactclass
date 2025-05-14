@@ -1,6 +1,16 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Button from "./Button"
+import { useContext } from "react"
+import { authContext } from "../contexts/AuthContext"
 const Header = ()=>{
+    const {isAuthenticated} = useContext(authContext)
+    const isAuth = isAuthenticated()
+    const navigate = useNavigate()
+     const logout = ()=>{
+        localStorage.removeItem("accessToken")
+        navigate("/")
+    }
+
     return(
         <div style={styles.container}>
             <h1 style={styles.logo}>Logo</h1>
@@ -12,8 +22,19 @@ const Header = ()=>{
                 <Link to="/products">Products</Link>
                 <Link to="/dashboard">Dashboard</Link>
             </div>
-
-            <Button text="Explore" bgColor="blue"/>
+        {
+            isAuth ? (
+                <div>
+                    <Button text="Explore" bgColor="blue"/>
+                    <button onClick={logout}>Logout</button>
+                </div>
+            ) : (
+                <div>
+                    <Link style={{border: "1px solid", marginRight: "1rem", padding: ".5rem 1rem"}} to="/signin">SIgn in</Link>
+                    <Link style={{border: "1px solid", marginRight: "1rem", padding: ".5rem 1rem"}} to="signup">SIgn up</Link>
+                </div>
+            )
+        }
         </div>
     )
 }

@@ -12,6 +12,7 @@ import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import ProtedtedRoutes from "./components/ProtedtedRoutes";
 import { Toaster } from "sonner";
+import Signup from "./pages/Signup";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="/users" element={<Users />} />
               <Route path="/products/:id" element={<SingleProduct />} />
               <Route path="/signin" element={<Signin />} />
+              <Route path="/signup" element={<Signup />} />
 
               <Route element={<ProtedtedRoutes />}>
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -35,7 +37,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-          <Toaster position="top-right" richColors closeButton 
+          <Toaster position="top-right" richColors closeButton visibleToasts={1}
           icons={{
             success: "./assets/react.svg"
           }}
