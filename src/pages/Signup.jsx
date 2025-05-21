@@ -18,7 +18,7 @@ const Signup = () => {
   // handle input
   const handleInput = (e) => {
     const {name, value} = e.target
-    setFormData(prev => ({...prev, [name]:value}))
+    setFormData(prev => ({...prev, [name]: value}))
   };
 
   // handle submit
