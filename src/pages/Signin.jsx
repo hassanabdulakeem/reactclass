@@ -1,11 +1,87 @@
-import React from 'react'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Signin = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [signingin, setSigningin] = useState(false)
+  const baseUrl = import.meta.env.VITE_BASE_URL
+  const navigate = useNavigate()
+
+
+
+
+  // handle input
+  const handleInput = (e) => {
+    const {name, value} = e.target
+    setFormData(prev => ({...prev, [name]:value}))
+  };
+
+  // handle submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSigningin(true)
+    try {
+        const response = await fetch(`${baseUrl}/auth/signin`, {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        const data = await response.json()
+        if(data.status === "success"){
+            toast.success(data.message)
+            navigate("/")
+        }
+
+    } catch (error) {
+        console.log(error)
+    } finally{
+        setSigningin(false)
+    }
+    
+  };
+
   return (
     <div>
-      <h1>Sign in page</h1>
-    </div>
-  )
-}
+      <h1>Signin</h1>
 
-export default Signin
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="joe@example.com"
+            onChange={handleInput}
+          />
+        </div>
+       
+         
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="John doe"
+            onChange={handleInput}
+          />
+        </div>
+
+        <button disabled={signingin}>
+            {signingin ? "signing in..." : "Submit"}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Signin;
+
+
