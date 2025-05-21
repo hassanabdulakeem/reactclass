@@ -13,15 +13,16 @@ import Dashboard from "./pages/Dashboard";
 import ProtedtedRoutes from "./components/ProtedtedRoutes";
 import { Toaster } from "sonner";
 import Signup from "./pages/Signup";
+import VerifyAccount from "./pages/VerifyAccount";
 
 const App = () => {
   return (
     <div>
-      <AuthProvider>
-        <ProductProvider>
-          <BrowserRouter>
+      <BrowserRouter>
+        <AuthProvider>
+          <ProductProvider>
             <Header />
-              
+
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/products" element={<Products />} />
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/products/:id" element={<SingleProduct />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/verify/:token" element={<VerifyAccount />}/>
 
               <Route element={<ProtedtedRoutes />}>
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -36,16 +38,18 @@ const App = () => {
 
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-          <Toaster position="top-right" richColors closeButton visibleToasts={1}
-          icons={{
-            success: "./assets/react.svg"
-          }}
-
-
-          />
-        </ProductProvider>
-      </AuthProvider>
+            <Toaster
+              position="top-right"
+              richColors
+              closeButton
+              visibleToasts={1}
+              icons={{
+                success: "./assets/react.svg",
+              }}
+            />
+          </ProductProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </div>
   );
 };
