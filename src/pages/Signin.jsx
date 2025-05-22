@@ -89,6 +89,7 @@ const Signin = () => {
         <button type="submit" disabled={signingIn}>
           {signingIn ? "Signing in..." : "Sign In"}
         </button>
+        <a href="./ForgetPassword.jsx">forgotten password</a>
       </form>
     </div>
   );
