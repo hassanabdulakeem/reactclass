@@ -21,6 +21,7 @@ const Header = ()=>{
                 <Link to="/contact">Contact us</Link>
                 <Link to="/products">Products</Link>
                 <Link to="/dashboard">Dashboard</Link>
+                <Link to="/TodoApp">TodoApp</Link>
             </div>
         {
             isAuth ? (

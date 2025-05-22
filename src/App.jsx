@@ -14,6 +14,7 @@ import ProtedtedRoutes from "./components/ProtedtedRoutes";
 import { Toaster } from "sonner";
 import Signup from "./pages/Signup";
 import VerifyAccount from "./pages/VerifyAccount";
+import TodoApp from "./pages/TodoApp";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="/" element={<Homepage />} />
               <Route path="/products" element={<Products />} />
               <Route path="/users" element={<Users />} />
+              <Route path="/Todoapp" element={<TodoApp />} />
               <Route path="/products/:id" element={<SingleProduct />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/signup" element={<Signup />} />
