@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { authContext } from "../contexts/AuthContext";
 
 const Signin = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [signingIn, setSigningIn] = useState(false);
+  const {signingIn,signin,} = useContext(authContext)
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
 
@@ -20,39 +21,9 @@ const Signin = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSigningIn(true);
+    signin(formData)
 
-    try {
-      const response = await fetch(`${baseUrl}/auth/signin`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },  
-        body: JSON.stringify(formData),
-      });
-
-      // Check if response is successful (status 200-299)
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({
-          message: "Invalid email or password",
-        }));
-        throw new Error(errorData.message || "Sign-in failed");
-      }
-
-      const data = await response.json();
-
-      if (data.status === "success") {
-        toast.success(data.message);
-        navigate("/dashboard"); // Ensure correct path (no extra spaces)
-      } else {
-        toast.error(data.message || "Something went wrong");
-      }
-    } catch (error) {
-      console.error("Sign-in error:", error);
-      toast.error(error.message || "Failed to connect to the server");
-    } finally {
-      setSigningIn(false);
-    }
+    
   };
 
   return (
